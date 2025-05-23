@@ -1,5 +1,6 @@
 <script setup>
 import { switchTheme } from "../theme";
+import NavLink from "../Components/NavLink.vue";
 </script>
 
 <template>
@@ -7,8 +8,12 @@ import { switchTheme } from "../theme";
         <nav
             class="flex items-center justify-between max-w-screen-lg p-6 mx-auto"
         >
-            <Link :href="route('home')">Home</Link>
-            <div>
+            <NavLink routeName="home" componentName="Home">Home</NavLink>
+
+            <div class="flex items-center space-x-6">
+                <NavLink routeName="register" componentName="Auth/Register"
+                    >Register</NavLink
+                >
                 <button
                     @click="switchTheme"
                     class="grid w-6 h-6 rounded-full hover:bg-slate-700 place-items-center hover:outline outline-1"
