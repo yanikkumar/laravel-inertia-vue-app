@@ -5,7 +5,6 @@ import InputField from "../../../Components/InputField.vue";
 import PrimaryBtn from "../../../Components/PrimaryBtn.vue";
 import Title from "../../../Components/Title.vue";
 import ErrorMessages from "../../../Components/ErrorMessages.vue";
-import SessionMessages from "../../../Components/SessionMessages.vue";
 
 const props = defineProps({
     user: Object,
