@@ -7,7 +7,7 @@ defineProps({
 </script>
 <template>
     <div
-        class="flex flex-col justify-between h-full overflow-hidden bg-white rounded-lg shadow-lg dark:bg-salte-800"
+        class="flex flex-col justify-between h-full overflow-hidden bg-white rounded-lg shadow-lg dark:bg-slate-800"
     >
         <div>
             <!-- Image -->
@@ -19,7 +19,7 @@ defineProps({
                             : '/storage/images/listing/default.png'
                     "
                     alt=""
-                    class="object-contain object-center w-full h-48 bg-slate-300"
+                    class="object-contain object-center w-full h-48 bg-slate-800"
                 />
             </Link>
             <!-- Title -->
