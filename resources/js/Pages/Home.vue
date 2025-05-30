@@ -1,14 +1,43 @@
 <script setup>
 import Card from "../Components/Card.vue";
 import PaginationLinks from "../Components/PaginationLinks.vue";
+import InputField from "../Components/InputField.vue";
+import { router, useForm } from "@inertiajs/vue3";
 
-defineProps({
+const props = defineProps({
     listings: Object,
+    searchTerm: String,
 });
+
+const form = useForm({
+    search: props.searchTerm,
+});
+
+const search = () => {
+    router.get(route("home"), {
+        search: form.search,
+    });
+};
 </script>
 
 <template>
     <Head title="- Lateset Listings"></Head>
+
+    <div class="flex items-center justify-between mb-4">
+        <div>Filter</div>
+        <div class="w-1/4">
+            <form @submit.prevent="search">
+                <InputField
+                    label=""
+                    icon="magnifying-glass"
+                    placeholder="Search..."
+                    type="search"
+                    v-model="form.search"
+                />
+            </form>
+        </div>
+    </div>
+
     <div v-if="Object.keys(listings.data).length">
         <div class="grid grid-cols-3 gap-4">
             <div v-for="listing in listings.data" :key="listing.id">
@@ -19,4 +48,5 @@ defineProps({
             <PaginationLinks :paginator="listings" />
         </div>
     </div>
+    <div v-else>There are no listings</div>
 </template>
