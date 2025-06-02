@@ -8,24 +8,25 @@ import ErrorMessages from "../../Components/ErrorMessages.vue";
 import PrimaryBtn from "../../Components/PrimaryBtn.vue";
 import { useForm } from "@inertiajs/vue3";
 
+const props = defineProps({
+    listing: Object,
+});
+
 const form = useForm({
-    title: null,
-    desc: null,
-    tags: null,
-    email: null,
-    link: null,
+    title: props.listing.title,
+    desc: props.listing.desc,
+    tags: props.listing.tags,
+    email: props.listing.email,
+    link: props.listing.link,
     image: null,
 });
 </script>
 <template>
-    <Head title="- Create Listing" />
+    <Head title="- Edit Listing" />
     <Container>
-        <Title>Create A New Listing</Title>
+        <Title>Edit Your Listing</Title>
         <ErrorMessages :errors="form.errors" />
-        <form
-            class="grid grid-cols-2 gap-5"
-            @submit.prevent="form.post(route('listing.store'))"
-        >
+        <form class="grid grid-cols-2 gap-5">
             <div class="space-y-6">
                 <InputField
                     label="Title"
@@ -59,10 +60,13 @@ const form = useForm({
                     placeholder="https://inertiajs.com"
                     v-model="form.link"
                 />
-                <ImageUpload @image="(e) => (form.image = e)" />
+                <ImageUpload
+                    @image="(e) => (form.image = e)"
+                    :listingImage="listing.image"
+                />
             </div>
             <div>
-                <PrimaryBtn :disabled="form.processing">Create</PrimaryBtn>
+                <PrimaryBtn :disabled="form.processing">Update</PrimaryBtn>
             </div>
         </form>
     </Container>
