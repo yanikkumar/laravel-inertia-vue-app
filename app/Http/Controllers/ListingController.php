@@ -53,6 +53,7 @@ class ListingController extends Controller
         $fields = $request->validate([
             'title' => ['required', 'max:255'],
             'desc' => ['required'],
+            'email' => ['nullable', 'email'],
             'tags' => ['nullable', 'string'],
             'link' => ['nullable', 'url'],
             'image' => ['nullable', 'file', 'max:3072', 'mimes:jpg,jpeg,png,webp'],
