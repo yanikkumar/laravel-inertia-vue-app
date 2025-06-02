@@ -21,6 +21,7 @@ const form = useForm({
     <Head title="- Create Listing" />
     <Container>
         <Title>Create A New Listing</Title>
+        <ErrorMessages :errors="form.errors" />
         <form class="grid grid-cols-2 gap-5">
             <div class="space-y-6">
                 <InputField
