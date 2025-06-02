@@ -22,7 +22,10 @@ const form = useForm({
     <Container>
         <Title>Create A New Listing</Title>
         <ErrorMessages :errors="form.errors" />
-        <form class="grid grid-cols-2 gap-5">
+        <form
+            class="grid grid-cols-2 gap-5"
+            @submit.prevent="form.post(route('listing.store'))"
+        >
             <div class="space-y-6">
                 <InputField
                     label="Title"

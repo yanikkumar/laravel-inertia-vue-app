@@ -10,7 +10,7 @@ class Listing extends Model
     use HasFactory;
 
     protected $fillable = [
-        'titile',
+        'title',
         'desc',
         'tags',
         'email',
