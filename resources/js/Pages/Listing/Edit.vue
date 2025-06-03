@@ -13,12 +13,13 @@ const props = defineProps({
 });
 
 const form = useForm({
-    title: props.listing.title,
+    title: props.listing.title, 
     desc: props.listing.desc,
     tags: props.listing.tags,
     email: props.listing.email,
     link: props.listing.link,
     image: null,
+    _method: "PUT",
 });
 </script>
 <template>
@@ -26,7 +27,10 @@ const form = useForm({
     <Container>
         <Title>Edit Your Listing</Title>
         <ErrorMessages :errors="form.errors" />
-        <form class="grid grid-cols-2 gap-5">
+        <form
+            @submit.prevent="form.post(route('listing.update', listing.id))"
+            class="grid grid-cols-2 gap-5"
+        >
             <div class="space-y-6">
                 <InputField
                     label="Title"
